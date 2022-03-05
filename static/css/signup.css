@@ -139,3 +139,27 @@ input:-webkit-autofill:active {
   list-style-type: none !important;
   text-align: center !important;
 }
+/* smaller phones media query */
+@media screen and (min-device-width: 280px) and (max-device-width: 653px) {
+  .signup__form {
+    width: 95%;
+  }
+}
+/* small phones media query */
+@media screen and (min-device-width: 320px) and (max-device-width: 640px) {
+  .signup__form {
+    width: 95%;
+  }
+}
+/* iphone x media query */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  .signup__form {
+    width: 95%;
+  }
+}
+/* ipad media query */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .signup__form {
+    width: 95%;
+  }
+}
