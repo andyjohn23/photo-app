@@ -16,7 +16,7 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <form method="POST" action="">
                         <div class="searchbar">
@@ -25,7 +25,7 @@
                         </div>
                     </form>
                 </ul>
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto navbar-controls">
                     <div class="navbar__right">
                         <div class="navbar__links">
                             <button onclick="location.href='{% url "photos:newPhoto" %}'">Submit a photo</button>
@@ -44,6 +44,7 @@
                         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'profile' request.user %}">View profile</a>
                             <a class="dropdown-item" href="{% url 'accounts:accountSettings' %}">Account settings</a>
+                            <a class="dropdown-item submitDropdown" href="{% url 'photos:newPhoto' %}">Submit a photo</a>
                             <hr class="dropdown-divider">
                             <a class="dropdown-item" href="{% url 'logout' %}">Logout @{{ user.username|slice:8 }}</a>
                         </ul>
