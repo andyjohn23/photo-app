@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'photos.apps.PhotosConfig',
     'django.contrib.humanize',
     'cloudinary',
+    'active_link',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'photoboard.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
