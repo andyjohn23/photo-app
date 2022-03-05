@@ -1,0 +1,165 @@
+.addPhotoContainer {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #ddd;
+  display: block;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+.addPhotoContainer h1 {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: "Sora" sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  padding-top: 2rem;
+}
+.post-form {
+  margin-top: 1rem;
+  width: 100%;
+  border: 0.1px solid rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border-radius: 5px;
+}
+.post-form form {
+  padding: 20px;
+  margin-top: 0rem;
+}
+.post-form form label {
+  font-size: 15px;
+  font-weight: 600;
+  font-family: sans-serif;
+  color: rgba(0, 0, 0, 0.7);
+}
+.post-form form input[type="file"] {
+  font-size: 15px;
+  font-weight: 500;
+  font-family: sans-serif;
+  color: rgba(0, 0, 0, 0.7);
+  outline: none;
+  cursor: pointer;
+  width: 250px;
+  outline: none;
+  border: none;
+}
+.gallery {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+  width: 100%;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.gallery img {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.post-form label {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+.post-form input:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  border: 1.8px solid rgba(0, 0, 0, 0.8);
+  box-shadow: none;
+}
+.post-form textarea:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  border: 1.8px solid rgba(0, 0, 0, 0.8);
+  box-shadow: none;
+}
+.post-form input[type="text"] {
+  font-size: 17px;
+  font-family: "Sora" sans-serif;
+  color: black;
+  padding-left: 10px;
+  width: 100%;
+  height: 40px;
+  border: 0.5px solid rgba(0, 0, 0, 0.8);
+  border-radius: 0% !important;
+}
+.post-form .input-group-text {
+  font-size: 17px;
+  font-family: "Sora" sans-serif;
+  color: black;
+  padding-left: 10px;
+  width: auto;
+  height: 50px;
+  border: 0.5px solid rgba(0, 0, 0, 0.8);
+  border-right: none;
+  border-radius: 0% !important;
+  background-color: rgba(218, 220, 220, 0.3);
+}
+.post-form select {
+  font-size: 17px;
+  font-family: "Sora" sans-serif;
+  color: black;
+  padding-left: 10px;
+  width: 100%;
+  height: 40px;
+  border: 0.5px solid rgba(0, 0, 0, 0.8);
+  border-radius: 0% !important;
+  background: transparent;
+}
+.post-form select:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  border: 1.8px solid rgba(0, 0, 0, 0.8);
+  box-shadow: none;
+}
+.post-form input[type="number"] {
+  font-size: 17px;
+  font-family: "Sora" sans-serif;
+  color: black;
+  padding-left: 10px;
+  width: 100%;
+  height: 40px;
+  border: 0.5px solid rgba(0, 0, 0, 0.8);
+  border-radius: 0% !important;
+}
+.post-form input[type="submit"] {
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+  width: 100px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bolder;
+  font-family: "Sora" sans-serif;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.9);
+  outline: none;
+  border: none;
+  color: white;
+  padding: 10px;
+}
+.post-form #message {
+  display: block;
+  margin-bottom: 2rem !important;
+  width: 100%;
+}
+.post-form .fieldError {
+  margin-top: 1rem;
+  margin-bottom: -1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #bd0707 !important;
+  font-size: 17px !important;
+  font-family: "Sora" sans-serif !important;
+  font-weight: 500;
+}
+.post-form .fieldError .errorlist li {
+  list-style-type: none !important;
+  text-align: center !important;
+}

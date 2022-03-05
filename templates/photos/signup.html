@@ -1,0 +1,59 @@
+{% extends "photo/base.html" %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="signup__container">
+    <div class="logo">
+        <a href="/" style="text-decoration: none;">
+            <img src="/static/images/logo.png/" alt="logo" />
+        </a>
+        <h1>Photo-Board</h1>
+    </div>
+    <div class="signup__form">
+        <div class="createHeader">
+            <h2>Create a new account</h2>
+            <h3>It's quick and easy.</h3>
+        </div>
+        <div class="form">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="fieldError">
+                    {% for fields in register_form %}
+                    {% for error in fields.errors %}
+                    <p>{{ error }}</p>
+                    {% endfor %}
+                    {% endfor %}
+                    {% if register_form.non_field_errors %}
+                    <p>{{ register_form.non_field_errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="usernameSignup">
+                    <input type="text" class="usernameInput" placeholder="Username" name="username" id="username"
+                        required />
+                </div>
+                <div class="emailSignup">
+                    <input type="email" class="emailInput" placeholder="Email address" name="email" id="email"
+                        required />
+                </div>
+                <div class="passwordSignup">
+                    <input type="password" class="passwordInput" placeholder="Password" name="password1" id="password"
+                        minLength="6" required />
+                </div>
+                <div class="passwordSignup">
+                    <input type="password" class="passwordInput" placeholder="Confirm Password" name="password2"
+                        id="password" minLength="6" required />
+                </div>
+                <input type="submit" value="Sign up" />
+            </form>
+            <div class="haveAccount">
+                <a href="{% url 'accounts:login' %}" style="text-decoration: none;">
+                    <span>Already have an account?</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

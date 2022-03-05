@@ -1,0 +1,48 @@
+{% extends "photo/base.html" %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login__container">
+    <div class="logo">
+        <a href="/" style="text-decoration: none;">
+            <img src="/static/images/logo.png/" alt="logo" />
+        </a>
+        <h1>Photo-Board</h1>
+    </div>
+    <div class="login__form">
+        <h2>Login to Photo-Board</h2>
+        <div class="form">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="fieldError">
+                    {% if login_form.non_field_errors %}
+                    <p>{{ login_form.non_field_errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="emailLogin">
+                    <input type="email" class="emailInput" placeholder="Email address" name="email" autocomplete="off" />
+                </div>
+                <div class="passwordLogin">
+                    <input type="password" class="passwordInput" placeholder="Password" name="password"
+                        minLength="6" autocomplete="off" />
+                </div>
+                <input type="submit" value="Log In" />
+            </form>
+            <div class="forgotPassword">
+                <a href="" style="text-decoration: none;">
+                    <span>Forgot password?</span>
+                </a>
+            </div>
+            <span class="option">or</span>
+            <div class="createAccount">
+                <a href="{% url 'accounts:signup' %}" style="text-decoration: none;">
+                    <button>Create New Account</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

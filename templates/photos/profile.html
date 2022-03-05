@@ -1,0 +1,215 @@
+{% include 'photo/navbar.html' %}
+{% load static %}
+{% load humanize %}
+{% load active_link_tags %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profileContainer">
+    <div class="profileImage">
+        {% if profile.profileImage %}
+        <img src="{{ profile.profileImage.url }}" class="profileAvatar" />
+        {% else %}
+        {{ profile.user.username|slice:1 }}
+        {% endif %}
+    </div>
+    <div class="profileSection">
+        <div class="profileUser__info">
+            <h1 class="profileName">{{ profile.user.username|title }}</h1>
+            {% if user.is_authenticated and user == profile.user %}
+            <a href="{% url 'accounts:accountSettings' %}" style="text-decoration: none;">
+                <button class="profileEdit__button">
+                    <i class="fa fa-pencil editIcon" aria-hidden="true"></i>
+                    Edit Profile
+                </button>
+            </a>
+            {% endif %}
+        </div>
+        <div class="profileDetails">
+            <div class="profileBio">
+                <p class="profileBio__description">
+                    {% if profile.bio %}
+                    {{ profile.bio }}
+                    {% else %}
+                    Download free, beautiful high-quality photos curated by {{ profile.user.username|title }}.
+                    {% endif %}
+                </p>
+            </div>
+            <div class="profileSupport">
+                <a href="" style="text-decoration: none;" class="profileSupport__link">
+                    <i class="material-icons moneyIcon">monetization_on</i>
+                    <span class="supportName">Support via PayPal</span>
+                </a>
+            </div>
+            <div class="profileLocation">
+                <i class="material-icons locationIcon">location_on</i>
+                <span class="locationName">Nairobi</span>
+            </div>
+            <div class="profileConnect">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Connect with {{ profile.user.username|title }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="profilePhoto__details">
+    <div class="photoGallery">
+        <hr class="horizontal-line" />
+        {% if photos %}
+        <div class="photoGallery__header">
+            <a class="{% active_link 'profile' profile.user 'is-active' strict=True %}"
+                onclick="location.href='{% url 'profile' profile.user %}'">
+                <div class="photoGallery__link">
+                    <i class="material-icons photoIcon">panorama</i>
+                    <span>Photos {{ number_of_photos }}</span>
+                </div>
+            </a>
+            <a class="{% active_link 'accounts:accountSettings' 'is-active' strict=True %}">
+                <div class="photoGallery__link">
+                    <i class="material-icons photoIcon">favorite</i>
+                    <span>Likes</span>
+                </div>
+            </a>
+        </div>
+        {% endif %}
+        {% if photos %}
+        <div class="photoList__container">
+            <div class="photoItem__container">
+                {% for photo in photos %}
+                <div class="box img-wrapper" data-bs-toggle="modal" data-bs-target="#image{{ photo.id }}">
+                    <img src="{{ photo.image.url }}" alt="photo" id="myImg" title="photo" />
+                    <div class="photo__details">
+                        <div class="photoIcons">
+                            <div class="like__container">
+                                <button title="Like photo">
+                                    <i class="material-icons likeButton">favorite</i>
+                                </button>
+                            </div>
+                            <div class="download__container">
+                                <a href="" style="text-decoration: none;">
+                                    <button title="Download photo">
+                                        <i class="material-icons downloadIcon">file_download</i>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="photo__ownerDetails">
+                            {% if user.is_authenticated and user == profile.user %}
+                            <div class="edit__container">
+                                <button title="Edit photo"
+                                    onclick="location.href='{% url "photos:editPhoto" photo.id %}'">
+                                    Edit
+                                </button>
+                            </div>
+                            {% else %}
+                            <div style="width: 40px;">
+                                {% if photo.user.profile.profileImage %}
+                                <img src="{{ photo.user.profile.profileImage.url }}" class="profile__image"
+                                    alt="profile-image" />
+                                {% else %}
+                                <div class="profile__name">
+                                    {{ photo.user.username|slice:1 }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            <a href="{% url 'profile' photo.user %}" class="owner__username"
+                                style="text-decoration: none;">
+                                {{ photo.user|title }}
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div className="photo__modal">
+                    <div class="modal fade" id="image{{ photo.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="border: none;">
+                                    <div class="modal-title">
+                                        <div class="modalPhoto__ownerDetails">
+                                            <div style="width: 35px;">
+                                                {% if photo.user.profile.profileImage %}
+                                                <img src="{{ photo.user.profile.profileImage.url }}"
+                                                    class="profile__image" alt="profile-image" />
+                                                {% else %}
+                                                <div class="profile__name">
+                                                    {{ photo.user.username|slice:1 }}
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                            <a href="{% url 'profile' photo.user %}" class="owner__username"
+                                                style="text-decoration: none;">
+                                                {{ photo.user|title }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <button style="outline: none;" class="modal__closeButton" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="max-height: inherit; width: 100%; overflow: hidden;">
+                                    <div class="modal__photoSection">
+                                        <img src="{{ photo.image.url }}" alt="photo" />
+                                    </div>
+                                    <div class="modal__photoDetails">
+                                        <div class="modal__photoViews">
+                                            <h3>Views</h3>
+                                            <a>30k</a>
+                                        </div>
+                                        <div class="modal__photoCategory">
+                                            <h3>Featured in</h3>
+                                            <a href="">{{ photo.category|title }}</a>
+                                        </div>
+                                    </div>
+                                    <div class="modal__additionalPhotoDetails">
+                                        {% if photo.location %}
+                                        <div class="modal__photoLocation">
+                                            <i class="material-icons modal__location">location_on</i>
+                                            <h3>{{ photo.location|title }}</h3>
+                                        </div>
+                                        {% endif %}
+                                        <div class="modal__photoDatePosted">
+                                            <i class="material-icons modal__calender">date_range</i>
+                                            <h3>Published {{ photo.published | date:"F d, Y" }}</h3>
+                                        </div>
+                                        {% if photo.cameraType %}
+                                        <div class="modal__photoCamera">
+                                            <i class="material-icons modal__camera">camera_alt</i>
+                                            <h3>{{ photo.cameraType|title }}</h3> 
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="modal-footer" style="border: none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="no-photos">
+            <i class="material-icons photoIcon">panorama</i>
+            <p>No Photos Yet</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

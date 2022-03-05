@@ -1,0 +1,101 @@
+{% include 'photo/navbar.html' %}
+{% load static %}
+{% load active_link_tags %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/editProfile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container editContainer">
+    <div class="edit-profile-form">
+        <h1>Profile & Settings</h1>
+        <hr class="horizontal-line">
+        <div class="edit-links-header">
+            <a class="{% active_link 'accounts:accountSettings' 'is-active' strict=True %}"
+                onclick="location.href='{% url "accounts:accountSettings" %}'">
+                <span>Edit profile</span>
+            </a>
+            <a class="{% active_link 'accounts:profilePhotoSettings' 'is-active' strict=True %}" onclick="location.href='{% url "accounts:profilePhotoSettings" %}'">
+                <span>Profile picture</span>
+            </a>
+        </div>
+        <div class="profile-form">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" id="message">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            <div class="fieldError">
+                {% for fields in u_form %}
+                {% for error in fields.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+                {% endfor %}
+                {% if u_form.non_field_errors %}
+                <p>{{ u_form.non_field_errors }}</p>
+                {% endif %}
+            </div>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="username" class="form-label">Username</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" required {{ u_form.username }} </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="website" class="form-label">Website</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Url" {{ p_form.websiteUrl }}
+                                    </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email Address</label>
+                                <div class="input-group mb-3">
+                                    <input type="email" class="form-control" required {{ u_form.email }} </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="twitter" class="form-label">Twitter</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">http://www.twitter.com/</span>
+                                        <input type="text" class="form-control" placeholder="Username"
+                                            {{ p_form.twitterUrl }} </div>
+                                    </div>
+                                        <div class="col-md-6">
+                                            <label for="biography" class="form-label">Biography</label>
+                                            <div class="input-group mb-3">
+                                                <textarea class="form-control" id="biography" rows="8"
+                                                    {{ p_form.bio }} </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="facebook" class="form-label">Facebook</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text">http://www.facebook.com/</span>
+                                                    <input type="text" class="form-control" placeholder="Username" id="facebook"
+                                                       {{ p_form.facebookUrl }} </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="linkedin" class="form-label">LinkedIn</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">http://www.linkedin.com/</span>
+                        <input type="text" class="form-control" placeholder="Resource ID" id="linkedin" {{ p_form.linkedInUrl }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="youtube" class="form-label">Youtube</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">http://www.youtube.com/</span>
+                        <input type="text" class="form-control" placeholder="Username" id="youtube" {{ p_form.youtubeUrl }}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" id="submit-data" disabled="" value="Save" class="text-center" />
+        </form>
+    </div>
+</div>
+{% block scripts %}
+<script src="{% static 'js/editProfile.js' %}"></script>
+{% endblock %}
+{% endblock %}
