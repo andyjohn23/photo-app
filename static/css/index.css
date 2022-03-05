@@ -312,6 +312,14 @@
   .photoList__container {
     columns: 1;
   }
+  .slider__content {
+    margin-top: 17rem;
+    margin-left: 1.5rem;
+  }
+  .slider__container .searchbar {
+    width: 85vw;
+    height: 50px;
+  }
 }
 /* iphone x media query */
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
