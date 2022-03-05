@@ -306,6 +306,17 @@
   .photoList__container {
     columns: 1;
   }
+  .slider__content {
+    margin-top: 17rem;
+    margin-left: 1.5rem;
+  }
+  .slider__container .searchbar {
+    width: 85vw;
+    height: 50px;
+  }
+  .slider__content h1 {
+    font-size: 35px;
+  }
 }
 /* small phones media query */
 @media screen and (min-device-width: 320px) and (max-device-width: 640px) {
