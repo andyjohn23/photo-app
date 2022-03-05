@@ -456,16 +456,21 @@
   .photoList__container {
     columns: 1;
   }
-  .slider__content {
-    margin-top: 17rem;
-    margin-left: 1.5rem;
+  .profileContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
   }
-  .slider__container .searchbar {
-    width: 85vw;
-    height: 50px;
+  .profileSection {
+    max-width: 100%;
+    width: 92%;
+    border: none;
   }
-  .slider__content h1 {
-    font-size: 35px;
+  .profileConnect {
+    margin-left: 0.3rem;
+    position: relative;
   }
 }
 /* small phones media query */
