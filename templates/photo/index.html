@@ -29,11 +29,6 @@
             <img src="{{ photo.image.url }}" alt="photo" id="myImg" title="photo" />
             <div class="photo__details">
                 <div class="photoIcons">
-                    <div class="like__container">
-                        <button title="Like photo">
-                            <i class="material-icons likeButton">favorite</i>
-                        </button>
-                    </div>
                     <div class="download__container">
                         <a href="" style="text-decoration: none;">
                             <button title="Download photo">
@@ -97,11 +92,15 @@
                             <div class="modal__photoDetails">
                                 <div class="modal__photoViews">
                                     <h3>Views</h3>
-                                    <a>30k</a>
+                                    <a>0</a>
                                 </div>
                                 <div class="modal__photoCategory">
                                     <h3>Featured in</h3>
                                     <a href="">{{ photo.category|title }}</a>
+                                </div>
+                                <div class="modal__photoTitle">
+                                    <h3>Title</h3>
+                                    <a>{{ photo.title|title }}</a>
                                 </div>
                             </div>
                             <div class="modal__additionalPhotoDetails">

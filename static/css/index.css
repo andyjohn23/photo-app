@@ -301,3 +301,21 @@
   font-size: 18.5px !important;
   color: grey;
 }
+/* small phones media query */
+@media screen and (min-device-width: 320px) and (max-device-width: 640px) {
+  .photoList__container {
+    columns: 1;
+  }
+}
+/* iphone x media query */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  .photoList__container {
+    columns: 1;
+  }
+}
+/* ipad media query */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .photoList__container {
+    columns: 1;
+  }
+}

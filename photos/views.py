@@ -147,3 +147,10 @@ def image_like(request):
         except:
             pass
     return JsonResponse({'status': 'error'})
+
+def category(request):
+    category = Category.objects.exclude(name='Default')
+    context = {
+        'category':category,
+    }
+    return context

@@ -46,6 +46,9 @@
         <div class="loader"></div>
     </div> -->
     <div class="container-fluid" style="margin: 0; padding: 0;">
+        {% for category in categories %}
+        <a class="dropdown-item" href="{% url 'profile' request.user %}">{{ category.name }}</a>
+        {% endfor %}
         {% block content %} {% endblock %}
     </div>
 

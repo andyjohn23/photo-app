@@ -98,47 +98,7 @@
 .loginLink .navLinks:hover {
   color: black !important;
 }
-.category {
-  margin-right: 1rem;
-}
-.category .dropdown .nav-link {
-  font-size: 15px;
-  font-weight: 600;
-  font-family: sans-serif;
-}
-.category .dropdown .nav-link:hover {
-  color: #222222 !important;
-}
-.category .dropdown-toggle::after {
-  display: none;
-}
-.category .dropdown-menu {
-  margin-top: 1.1rem;
-  width: 280px;
-  height: auto;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  outline: none;
-  box-shadow: 2px 2px 2px -3px rgba(0, 0, 0, 0.9);
-  border-radius: 5px;
-}
-.category .dropdown-item {
-  display: inline-flex;
-  align-items: center;
-  justify-items: center;
-  gap: 10px;
-  font-size: 16px;
-  font-family: sans-serif;
-  font-weight: normal;
-}
-.category .dropdown-item i {
-  font-size: 22px;
-}
-.category .dropdown-item.active,
-.dropdown-item:active {
-  color: black;
-  text-decoration: none;
-  background-color: white;
-}
+
 .navbar .avatar img {
   border-radius: 50%;
   width: 36px;
