@@ -1,0 +1,1 @@
+web: gunicorn photoboard.wsgi --log-file -
