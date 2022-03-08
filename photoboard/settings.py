@@ -20,7 +20,7 @@ STATICFILES_DIRS = [
 
 # SECURITY WARNING: keep the secret key used in production secret!
 MODE = config("MODE", default="dev")
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-&^5gib_ja4scief690cb^%ksxgaamzx(m@pm6$!tbj2$7x2h2w'
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
