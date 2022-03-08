@@ -4,7 +4,7 @@
 [Andrew John](https://github.com/andyjohn23)
 
 ## DESCRIPTION 
-This is an Awwards web application clone built using django.
+This is a photo web application clone built using django.
 
 ## LIVE SITE
 (https://photoandy.herokuapp.com/)
